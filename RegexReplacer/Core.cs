@@ -35,6 +35,10 @@ namespace RegexReplacer
 
                 foreach (var file in files)
                 {
+                    if (file == Program.SettingsPath)
+                    {
+                        continue;
+                    }
                     var content = File.ReadAllText(file);
 
                     var newContent = content.Replace(pattern.From, pattern.To);
