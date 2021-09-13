@@ -25,16 +25,20 @@ By default, running the program once without an `regexreplacer.json` file in the
       "path": "/tmp/your_directory",
       "searchBlob": "*.*",
       "matcher": "aa\/",
-      "from": "hello",
-      "to": "goodbye",
+      "replace": [
+        {
+          "from": "hello",
+          "to": "goodbye",
+        }
+      ],
       "searchOptions": 1
     }
   ]
 }
 ```
-Thia pattern will change all files (recursively) inside the folder `/tmp/your_directory` where the path matches the regex `aa/`. Once it lists these files, it will try to replace the word `hello` with `goodbye`.
+This pattern will change all files (recursively) inside the folder `/tmp/your_directory` where the path matches the regex `aa/`. Once it lists these files, it will try to replace the word `hello` with `goodbye`.
 
-_Note_ `patterns` is an array and mutliple patterns are allowed.
+_Note_ `patterns` is an array and multiple patterns are allowed.
 
 `/tmp/your_directory/aa/afile.txt`
 ```txt
