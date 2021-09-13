@@ -6,7 +6,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/RegexReplacer/bin/Debug/net5.0/RegexReplacer.dll",
+            "program": "${workspaceFolder}/RegexReplacer/bin/Debug/net5.0/linux-x64/RegexReplacer.dll",
             "args": [],
             "cwd": "${workspaceFolder}/RegexReplacer",
             "console": "internalConsole",
