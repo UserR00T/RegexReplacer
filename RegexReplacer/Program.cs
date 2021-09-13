@@ -15,32 +15,36 @@ namespace RegexReplacer
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase
         };
 
+        public static string SettingsPath { get; private set; }
+
         public static void Main(string[] args)
         {
-            var path = args.Length != 0 ? string.Join(' ', args) : "regexreplacer.json";
-            if (!File.Exists(path))
+            SettingsPath = args.Length != 0 ? string.Join(' ', args) : "regexreplacer.json";
+            if (!File.Exists(SettingsPath))
             {
-                File.WriteAllText(path, JsonSerializer.Serialize<Settings>(new Settings()
+                File.WriteAllText(SettingsPath, JsonSerializer.Serialize<Settings>(new Settings()
                 {
                     Patterns = new List<Pattern>()
                     {
                         new Pattern()
                     }
                 }, _serializerSettings));
-                Util.ExitWith($"File '{path}' does not exist. An example file has been created.", 1);
+                Util.ExitWith($"File '{SettingsPath}' does not exist. An example file has been created.", 1);
                 return;
             }
 
             Settings settings;
             try
             {
-                settings = JsonSerializer.Deserialize<Settings>(File.ReadAllText(path), _serializerSettings);
+                settings = JsonSerializer.Deserialize<Settings>(File.ReadAllText(SettingsPath), _serializerSettings);
             }
             catch (JsonException ex)
             {
                 Util.ExitWith($"Invalid JSON: {ex.Message}", 2);
                 return;
             }
+            // Expand path for future comparison
+            SettingsPath = Path.GetFullPath(SettingsPath);
 
             var core = new Core(settings);
             try
