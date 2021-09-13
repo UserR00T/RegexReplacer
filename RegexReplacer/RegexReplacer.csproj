@@ -3,6 +3,12 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
+
+    <PackageId>RegexReplacer</PackageId>
+    <Description>A simple C# program that you can use to replace text in a specified regex/blob pattern of files.</Description>
+    <FileVersion>1.1.0</FileVersion>
+    <AssemblyVersion>1.1.0</AssemblyVersion>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <PropertyGroup>
