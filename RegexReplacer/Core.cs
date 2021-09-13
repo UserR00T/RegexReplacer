@@ -40,8 +40,13 @@ namespace RegexReplacer
                         continue;
                     }
                     var content = File.ReadAllText(file);
+                    var newContent = content;
 
-                    var newContent = content.Replace(pattern.From, pattern.To);
+                    foreach (var replace in pattern.Replace)
+                    {
+                        newContent = newContent.Replace(replace.From, replace.To);
+                    }
+
                     if (content == newContent)
                     {
                         continue;

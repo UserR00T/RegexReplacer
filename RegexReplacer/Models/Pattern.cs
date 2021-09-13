@@ -1,10 +1,13 @@
+using System.Collections.Generic;
 using System.IO;
+using System.Text.Json.Serialization;
 
 namespace RegexReplacer.Models
 {
     public class Pattern
     {
-        public string Name => $"{Matcher} - {SearchBlob}";
+        [JsonIgnore]
+        public string Name => $"{SearchBlob} @ {Matcher} [{Replace.Count}]";
 
         public string Path { get; set; } = Directory.GetCurrentDirectory();
 
@@ -12,9 +15,7 @@ namespace RegexReplacer.Models
 
         public string Matcher { get; set; }
 
-        public string From { get; set; }
-
-        public string To { get; set; }
+        public List<Replace> Replace { get; set; } = new List<Replace>();
 
         public SearchOption SearchOptions { get; set; } = SearchOption.AllDirectories;
     }
